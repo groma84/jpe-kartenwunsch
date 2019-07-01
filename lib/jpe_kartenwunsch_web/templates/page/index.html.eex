@@ -1,35 +1,64 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
-</section>
+<section id="new_kartenwunsch">
+ <!-- <form id="new_kartenwunsch_form">
+    <fieldset name="stammdaten">
+      <label for="name">Name</label>
+      <input name="name" type="text" minlength="1" maxlength="50" required />
 
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">v1.4 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-    </ul>
-  </article>
+      <label for="instrumentengruppe">Instrumentengruppe</label>
+      <select name="instrumentengruppe" required>
+        <option value="violine1">Violine I</option>
+        <option value="violine2">Violine II</option>
+        <option value="viola">Viola</option>
+        <option value="cello">Cello</option>
+        <option value="kontrabass">Kontrabass</option>
+        <option value="blaeser_und_schlagwerk">Bläser und Schlagwerk</option>
+      </select>
+    </fieldset>
+    <fieldset name="kartenanzahl">
+      <label for="normalpreis">Normalpreiskarten</label>
+      <input name="normalpreis" type="number" min="0" max="20" step="1" required value="0" />
+
+      <label for="ermaessigt">Ermäßigt</label>
+      <input name="ermaessigt" type="number" min="0" max="20" step="1" required value="0" />
+
+      <label for="schueler">Schüler</label>
+      <input name="schueler" type="number" min="0" max="20" step="1" required value="0" />
+    </fieldset>
+    <button type="submit">Absenden</button>
+  </form>
+-->
+<%= form_for @changeset, Routes.kartenwunsch_path(@conn, :create), [as: :new_kartenwunsch], fn f -> %>
+  <fieldset name="stammdaten">
+  <label>
+    Name: <%= text_input f, :name, required: true, minlength: 2, maxlength: 150 %>
+  </label>
+
+  <label>
+  Instrumentengruppe: <%= select f, :instrumentengruppe, [
+    "Violine I": :violine1,
+    "Violine II": :violine2,
+    "Viola": :viola,
+    "Cello": :cello,
+    "Kontrabass": :kontrabass,
+    "Bläser und Schlagwerk": :blaeser_und_schlagwerk,
+  ], required: true %>
+  </label>
+  </fieldset>
+  
+  <fieldset name="karten">
+    <label>
+    Normalpreiskarten: <%= number_input f, :normalpreis, required: true, min: 0, max: 20, step: 1 %>
+    </label>
+        <label>
+    Ermäßigt: <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
+    </label>
+        <label>
+    Schüler: <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
+    </label>
+  </fieldset>
+  
+
+  <%= submit "Absenden" %>
+<% end %>
+
 </section>
