@@ -1,6 +1,10 @@
-<section id="new_kartenwunsch">
-<%= form_for @changeset, Routes.kartenwunsch_path(@conn, :create), [as: :new_kartenwunsch], fn f -> %>
+<section id="edit_kartenwunsch">
+<%= form_for @changeset, Routes.kartenwunsch_path(@conn, :update, @changeset.changes.unique_id), [as: :edited_kartenwunsch], fn f -> %>
   <fieldset name="stammdaten">
+  <label>
+    Nummer: <h1><%= @changeset.changes.unique_id %> </h1>
+    <p>Mit dieser Nummer kann eine bestehende Anfrage bearbeitet werden.</p>
+  </label>
   <label>
     Name: <%= text_input f, :name, required: true, minlength: 2, maxlength: 150 %>
   </label>
@@ -29,16 +33,15 @@
     </label>
   </fieldset>
   
+  <fieldset name="metadata">
+    <label>
+      Zuletzt geändert: <%= @changeset.changes.created %>
+    </label>
+    <%= hidden_input f, :created %>
+    <%= hidden_input f, :unique_id %>
+  </fieldset>
 
-  <%= submit "Absenden" %>
+  <%= submit "Aktualisieren" %>
 <% end %>
 
-</section>
-<section id="insert_existing_id">
-  <%= form_for @conn, Routes.bestehend_path(@conn, :redirect_to_edit), fn f -> %>
-    <label>
-      Bestehende Nummer: <%= text_input f, :unique_id, required: true, minlength: 6, maxlength: 6 %>
-    </label>
-    <%= submit "Aufrufen" %>
-  <% end %>
 </section>

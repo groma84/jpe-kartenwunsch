@@ -17,7 +17,14 @@ defmodule JpeKartenwunschWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/kartenwunsch", KartenwunschController, only: [:create]
+
+    get "/kartenwunsch/:id/edit", KartenwunschController, :edit
+    post "/kartenwunsch/", KartenwunschController, :create
+    post "/kartenwunsch/:id", KartenwunschController, :update
+
+    post "/bestehend/", BestehendController, :redirect_to_edit
+
+    # resources "/kartenwunsch", KartenwunschController, only: [:create, :edit, :update]
   end
 
   # Other scopes may use custom stacks.

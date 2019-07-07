@@ -15,6 +15,8 @@ defmodule JpeKartenwunsch.Kartenwunsch do
     :created
   ]
 
+  @derive Jason.Encoder
+
   defstruct name: nil,
             instrumentengruppe: nil,
             normalpreis: 0,

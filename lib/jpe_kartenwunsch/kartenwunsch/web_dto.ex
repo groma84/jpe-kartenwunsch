@@ -41,8 +41,25 @@ defmodule JpeKartenwunsch.Kartenwunsch.WebDto do
   end
 
   @spec create_new(%{}) :: Ecto.Changeset.t()
-  def create_new(attrs) do
-    changeset(%WebDto{}, attrs)
+  def create_new(attrs), do: changeset(%WebDto{}, attrs)
+
+  @spec from_domain([%JpeKartenwunsch.Kartenwunsch{}]) :: [%WebDto{}]
+  def from_domain(kartenwünsche), do: Enum.map(kartenwünsche, &transform_one_domain_to_data/1)
+
+  @spec to_changeset(%{}) :: Ecto.Changeset.t()
+  def to_changeset(kundenwunsch_map), do: changeset(%WebDto{}, kundenwunsch_map)
+
+  @spec transform_one_domain_to_data(%JpeKartenwunsch.Kartenwunsch{}) :: %{}
+  defp transform_one_domain_to_data(from_domain) do
+    %{
+      name: from_domain.name,
+      instrumentengruppe: from_domain.instrumentengruppe,
+      normalpreis: from_domain.normalpreis,
+      ermaessigt: from_domain.ermaessigt,
+      schueler: from_domain.schueler,
+      unique_id: from_domain.unique_id,
+      created: NaiveDateTime.to_iso8601(from_domain.created)
+    }
   end
 
   @doc false

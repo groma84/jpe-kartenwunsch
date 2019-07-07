@@ -9,7 +9,8 @@ defmodule JpeKartenwunsch.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      dialyzer: [plt_add_deps: :transitive]
     ]
   end
 
@@ -41,7 +42,8 @@ defmodule JpeKartenwunsch.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ecto, "~> 3.1"},
       {:phoenix_ecto, "~> 4.0"},
-      {:tzdata, "~> 1.0.0"}
+      {:tzdata, "~> 1.0.0"},
+      {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false}
     ]
   end
 end

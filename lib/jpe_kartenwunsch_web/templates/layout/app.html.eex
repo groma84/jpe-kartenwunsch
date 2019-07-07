@@ -10,7 +10,7 @@
   <body>
     <header>
       <section class="container phx-hero">
-        JPE Kartenwunsch
+        <a href="<%= Routes.page_path(@conn, :index) %>">JPE Kartenwunsch</a>
       </section>
     </header>
     <main role="main" class="container">
