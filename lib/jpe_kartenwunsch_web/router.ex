@@ -24,6 +24,8 @@ defmodule JpeKartenwunschWeb.Router do
 
     post "/bestehend/", BestehendController, :redirect_to_edit
 
+    get "/liste/", ListeController, :index
+
     # resources "/kartenwunsch", KartenwunschController, only: [:create, :edit, :update]
   end
 

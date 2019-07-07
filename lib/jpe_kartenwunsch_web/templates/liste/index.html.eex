@@ -1,0 +1,30 @@
+<section id="liste">
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Instrumentengruppe</td>
+        <td>Normal</td>
+        <td>Ermäßigt</td>
+        <td>Schüler</td>
+        <td>Zuletzt geändert</td>
+        <td>Nummer</td>
+      </tr>
+    </thead>
+
+    <tbody>
+       <%= for entry <- @data do %>
+        <tr>
+          <td><%= entry.name %></td>
+          <td><%= prettify_instrumentengruppe(entry.instrumentengruppe) %></td>
+          <td><%= entry.normalpreis %></td>
+          <td><%= entry.ermaessigt %></td>
+          <td><%= entry.schueler %></td>
+          <td><%= prettify_date(entry.created) %></td>
+          <td><%= entry.unique_id%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+ 
+</section>

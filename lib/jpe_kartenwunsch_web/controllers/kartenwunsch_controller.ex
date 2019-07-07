@@ -1,8 +1,6 @@
 defmodule JpeKartenwunschWeb.KartenwunschController do
   use JpeKartenwunschWeb, :controller
 
-  @full_file_path "test.txt"
-
   alias JpeKartenwunsch.Kartenwunsch.WebDto
   alias JpeKartenwunsch.KartenwunschRepo
 
@@ -11,13 +9,11 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
 
   def edit(conn, %{"id" => unique_id}) do
     as_changeset =
-      KartenwunschRepo.get(unique_id, @full_file_path)
+      KartenwunschRepo.get(unique_id, JpeKartenwunsch.DatabaseFilePath.get_file_path())
       |> WebDto.from_domain()
       # latest edit is enough
       |> Enum.at(0)
       |> WebDto.to_changeset()
-
-    IO.inspect(as_changeset, label: "Rendering for edit")
 
     render(conn, "update.html", changeset: as_changeset)
   end
@@ -31,11 +27,13 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
   end
 
   defp create_or_update(conn, kartenwunsch, success_verb) do
+    full_file_path = JpeKartenwunsch.DatabaseFilePath.get_file_path()
+
     kw =
       WebDto.create_new(kartenwunsch)
-      |> KartenwunschRepo.web_dto_to_domain(@full_file_path)
+      |> KartenwunschRepo.web_dto_to_domain(full_file_path)
 
-    KartenwunschRepo.insert(kw, @full_file_path)
+    KartenwunschRepo.insert(kw, full_file_path)
 
     conn
     |> put_flash(:info, "Kartenwunsch mit der Nummer '#{kw.unique_id}' wurde #{success_verb}")

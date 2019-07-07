@@ -57,19 +57,25 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     }
   end
 
+  @spec get_all(String.t()) :: [Kartenwunsch.t()]
+  def get_all(full_path) do
+    get_internal_sorted(fn _ -> true end, full_path)
+  end
+
   @spec get(Kartenwunsch.unique_id(), String.t()) :: [Kartenwunsch.t()]
   def get(unique_id, full_path) do
+    get_internal_sorted(fn kw -> kw.unique_id == unique_id end, full_path)
+  end
+
+  @spec get_internal_sorted((any() -> bool()), String.t()) :: [Kartenwunsch.t()]
+  defp get_internal_sorted(filterFn, full_path) do
     load_lines(full_path)
-    |> Enum.filter(fn kw ->
-      kw.unique_id == unique_id
-    end)
+    |> Enum.filter(&filterFn.(&1))
     |> Enum.sort(&(NaiveDateTime.compare(&1.created, &2.created) == :gt))
-    |> IO.inspect(label: "getting sorted")
   end
 
   @spec insert(Kartenwunsch, String.t()) :: none()
   def insert(kartenwunsch = %Kartenwunsch{}, full_path) do
-    IO.inspect(kartenwunsch, label: "Insert Kartenwunsch")
     {:ok, encoded} = Jason.encode(kartenwunsch)
     File.write(full_path, encoded <> "\r\n", [:append])
   end
@@ -81,8 +87,8 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     existing_ids = get_existing_ids(full_path)
 
     all_ids =
-      for letter <- ["A", "B", "C"], number <- 00000..99999 do
-        "#{letter}#{number}"
+      for letter <- ["A", "B", "C", "D", "E", "F"], number <- 00000..99999 do
+        "#{letter}#{String.pad_leading(Integer.to_string(number), 5, "0")}"
       end
       |> MapSet.new()
 
@@ -105,14 +111,25 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
 
   @spec load_lines(String.t()) :: [%Kartenwunsch{}]
   defp load_lines(full_path) do
-    {:ok, content} = File.read(full_path)
+    if is_nil(full_path) do
+      raise "full_path is nil, please set ENVVAR JPE_KARTENWUNSCH_DATABASE_FILE"
+    else
+      convert_storage_to_domain(File.read(full_path))
+    end
+  end
 
+  defp convert_storage_to_domain({:ok, content}) do
     String.split(content, "\r\n")
     |> Enum.filter(&(String.length(&1) != 0))
     |> Enum.map(fn line ->
       {:ok, %{} = kw} = Jason.decode(line)
       to_domain(kw)
     end)
+  end
+
+  defp convert_storage_to_domain({:error, :enoent}) do
+    IO.puts("load_lines -> convert_storage_to_domain: database file does not exist")
+    []
   end
 
   @spec to_domain(%{}) :: %Kartenwunsch{}

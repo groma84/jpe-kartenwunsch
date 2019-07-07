@@ -1,5 +1,8 @@
 use Mix.Config
 
+config :jpe_kartenwunsch,
+  database_file: System.get_env("JPE_KARTENWUNSCH_DATABASE_FILE")
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
