@@ -1,19 +1,21 @@
 # JpeKartenwunsch
 
-To start your Phoenix server:
-
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+## Remaining ideas
+### von Martin
+- Mögliche IDs einmalig als Datei generieren und von einem Agent(?) beim Start einlesen, um Antwortzeiten zu verbessern
+- Sinnvolle Aufteilung in OTP-Komponenten
+- Semestertrennung
+- Liste mit Summen
+- Druckansicht für Liste
+- Tabellenzeilen alternierend einfärben
+- Kartenwunsch-Eingabe freigeben/sperren
+- Datenschutz/Impressum Text
+- Layout verbessern (auch für mobile)
+### von Friederike
+- Ende des VVK einstellbar
+- Stoppen des VVK bei Ende einstellbar
+- Anzahl verfügbarer Karten anzeigbar
+- Sortierfunktion der Liste: nach Stimmgruppen
+- weitere Auswahlmöglichkeiten bei Stimmgruppen bei Eingabe: Dirigent, Solist, Aushilfe
+- zusätzliche Ticketkategorie: Freikarte für Flüchtlinge
+- zusätzlich einblenden bei Ticketkategorien: Preis (6€, 12€, 15€), Gültigkeit Schülerticket (nur bis 12 Jahre)
