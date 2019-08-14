@@ -86,11 +86,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
 
     existing_ids = get_existing_ids(full_path)
 
-    all_ids =
-      for letter <- ["A", "B", "C", "D", "E", "F"], number <- 00000..99999 do
-        "#{letter}#{String.pad_leading(Integer.to_string(number), 5, "0")}"
-      end
-      |> MapSet.new()
+    all_ids = JpeKartenwunsch.Ids.IdManager.get_all_possible()
 
     valid_ids = MapSet.difference(all_ids, existing_ids)
 
