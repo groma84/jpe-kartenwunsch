@@ -2,8 +2,9 @@
 
 ## Remaining ideas
 ### von Martin
-- Mögliche IDs einmalig als Datei generieren und von einem Agent(?) beim Start einlesen, um Antwortzeiten zu verbessern
-- Sinnvolle Aufteilung in OTP-Komponenten
+[x] Mögliche IDs einmalig als Datei generieren und von einem Agent(?) beim Start einlesen, um Antwortzeiten zu verbessern
+[x] Sinnvolle Aufteilung in OTP-Komponenten
+[x] Dialyzer-Fehler fixen
 - Semestertrennung
 - Liste mit Summen
 - Druckansicht für Liste

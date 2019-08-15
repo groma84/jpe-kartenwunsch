@@ -49,7 +49,6 @@ defmodule JpeKartenwunsch.Kartenwunsch.WebDto do
   @spec to_changeset(%{}) :: Ecto.Changeset.t()
   def to_changeset(kundenwunsch_map), do: changeset(%WebDto{}, kundenwunsch_map)
 
-  @spec transform_one_domain_to_data(%JpeKartenwunsch.Kartenwunsch{}) :: %{}
   defp transform_one_domain_to_data(from_domain) do
     %{
       name: from_domain.name,

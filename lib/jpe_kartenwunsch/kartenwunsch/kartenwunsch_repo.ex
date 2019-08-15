@@ -29,7 +29,6 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     }
   end
 
-  @spec web_dto_to_domain(Ecto.Changeset.t(), String.t(), NaiveDateTime.t()) :: %Kartenwunsch{}
   def web_dto_to_domain(
         %Ecto.Changeset{
           valid?: true,
@@ -67,7 +66,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     get_internal_sorted(fn kw -> kw.unique_id == unique_id end, full_path)
   end
 
-  @spec insert(Kartenwunsch, String.t()) :: :ok
+  @spec insert(%Kartenwunsch{}, String.t()) :: :ok
   def insert(kartenwunsch = %Kartenwunsch{}, full_path) do
     {:ok, encoded} = Jason.encode(kartenwunsch)
     JpeKartenwunsch.Persistence.FileStorage.write(encoded, full_path)
@@ -92,7 +91,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     new_id
   end
 
-  @spec get_existing_ids(String.t()) :: [String.t()]
+  @spec get_existing_ids(String.t()) :: MapSet.t(String.t())
   defp get_existing_ids(full_path) do
     load_lines(full_path)
     |> convert_storage_to_domain()
@@ -108,6 +107,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     JpeKartenwunsch.Persistence.FileStorage.load(full_path)
   end
 
+  @spec convert_storage_to_domain([String.t()]) :: [%Kartenwunsch{}]
   defp convert_storage_to_domain(lines) do
     lines
     |> Enum.filter(&(String.length(&1) != 0))
