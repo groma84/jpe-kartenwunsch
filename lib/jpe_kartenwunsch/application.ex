@@ -10,6 +10,7 @@ defmodule JpeKartenwunsch.Application do
     children = [
       # Start the endpoint when the application starts
       JpeKartenwunsch.Ids.IdManager,
+      JpeKartenwunsch.Persistence.Serializer,
       JpeKartenwunschWeb.Endpoint
       # Starts a worker by calling: JpeKartenwunsch.Worker.start_link(arg)
       # {JpeKartenwunsch.Worker, arg},

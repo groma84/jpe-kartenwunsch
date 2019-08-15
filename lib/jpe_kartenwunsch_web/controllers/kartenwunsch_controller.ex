@@ -28,10 +28,11 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
 
   defp create_or_update(conn, kartenwunsch, success_verb) do
     full_file_path = JpeKartenwunsch.DatabaseFilePath.get_file_path()
+    current_time = JpeKartenwunsch.Time.TimeGetter.now()
 
     kw =
       WebDto.create_new(kartenwunsch)
-      |> KartenwunschRepo.web_dto_to_domain(full_file_path)
+      |> KartenwunschRepo.web_dto_to_domain(full_file_path, current_time)
 
     KartenwunschRepo.insert(kw, full_file_path)
 
