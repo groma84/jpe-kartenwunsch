@@ -9,7 +9,7 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
 
   def edit(conn, %{"id" => unique_id}) do
     as_changeset =
-      KartenwunschRepo.get(unique_id, JpeKartenwunsch.DatabaseFilePath.get_file_path())
+      KartenwunschRepo.get(unique_id, JpeKartenwunsch.Path.FilePath.get_file_path())
       |> WebDto.from_domain()
       # latest edit is enough
       |> Enum.at(0)
@@ -27,7 +27,7 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
   end
 
   defp create_or_update(conn, kartenwunsch, success_verb) do
-    full_file_path = JpeKartenwunsch.DatabaseFilePath.get_file_path()
+    full_file_path = JpeKartenwunsch.Path.FilePath.get_file_path()
     current_time = JpeKartenwunsch.Time.TimeGetter.now()
 
     kw =

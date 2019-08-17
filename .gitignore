@@ -42,6 +42,5 @@ npm-debug.log
 /config/*.secret.exs
 
 /.elixir_ls/
-test.txt
-dev_db.txt
+*.db.txt
 ids.txt

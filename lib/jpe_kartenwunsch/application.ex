@@ -9,6 +9,7 @@ defmodule JpeKartenwunsch.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
+      JpeKartenwunsch.Path.FilePath,
       JpeKartenwunsch.Ids.IdManager,
       JpeKartenwunsch.Persistence.Serializer,
       JpeKartenwunschWeb.Endpoint

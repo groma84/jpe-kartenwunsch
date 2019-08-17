@@ -5,7 +5,7 @@ defmodule JpeKartenwunschWeb.ListeController do
   alias JpeKartenwunsch.Kartenwunsch.WebDto
 
   def index(conn, _params) do
-    full_path = JpeKartenwunsch.DatabaseFilePath.get_file_path()
+    full_path = JpeKartenwunsch.Path.FilePath.get_file_path()
 
     data =
       KartenwunschRepo.get_all(full_path)
