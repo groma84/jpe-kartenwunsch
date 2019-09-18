@@ -8,10 +8,10 @@ defmodule JpeKartenwunsch.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
-      JpeKartenwunsch.Path.FilePath,
       JpeKartenwunsch.Ids.IdManager,
+      JpeKartenwunsch.Path.FilePath,
       JpeKartenwunsch.Persistence.Serializer,
+      # Start the endpoint when the application starts
       JpeKartenwunschWeb.Endpoint
       # Starts a worker by calling: JpeKartenwunsch.Worker.start_link(arg)
       # {JpeKartenwunsch.Worker, arg},

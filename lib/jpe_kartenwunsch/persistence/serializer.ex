@@ -10,7 +10,7 @@ defmodule JpeKartenwunsch.Persistence.Serializer do
     GenServer.start_link(__MODULE__, :no_args, name: __MODULE__)
   end
 
-  @spec read((() -> [String.t()])) :: [String.t()]
+  @spec read((() -> String.t())) :: [String.t()]
   def read(readFn) do
     GenServer.call(__MODULE__, {:read, readFn})
   end
