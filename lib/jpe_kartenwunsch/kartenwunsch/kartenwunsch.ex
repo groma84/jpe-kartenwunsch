@@ -1,5 +1,6 @@
 defmodule JpeKartenwunsch.Kartenwunsch do
-  @type kartenanzahl() :: 0..20
+  alias JpeKartenwunsch.Kartenwunsch.Kartenanzahl
+
   @type instrumentengruppe() ::
           :violine1 | :violine2 | :viola | :cello | :kontrabass | :blaeser_und_schlagwerk
   @type name() :: String.t()
@@ -28,9 +29,9 @@ defmodule JpeKartenwunsch.Kartenwunsch do
   @type t() :: %__MODULE__{
           name: name(),
           instrumentengruppe: instrumentengruppe(),
-          normalpreis: kartenanzahl(),
-          ermaessigt: kartenanzahl(),
-          schueler: kartenanzahl(),
+          normalpreis: Kartenanzahl.kartenanzahl(),
+          ermaessigt: Kartenanzahl.kartenanzahl(),
+          schueler: Kartenanzahl.kartenanzahl(),
           unique_id: unique_id(),
           created: NaiveDateTime.t()
         }

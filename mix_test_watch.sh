@@ -1,2 +1,2 @@
 #!/bin/bash
-rerun --dir "lib" --pattern "**/*.ex" -- mix test
+rerun --dir "lib" --dir test --pattern "**/*.{ex,exs}" --exit --clear --name "Tests" -- mix test

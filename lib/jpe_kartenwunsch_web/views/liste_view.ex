@@ -21,7 +21,7 @@ defmodule JpeKartenwunschWeb.ListeView do
     end
   end
 
-  @spec pad_num_2(Integer.t()) :: String.t()
+  @spec pad_num_2(integer()) :: String.t()
   defp pad_num_2(num) do
     "#{String.pad_leading(Integer.to_string(num), 2, "0")}"
   end
