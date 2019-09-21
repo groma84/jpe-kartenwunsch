@@ -17,6 +17,9 @@
     "Cello": :cello,
     "Kontrabass": :kontrabass,
     "Bläser und Schlagwerk": :blaeser_und_schlagwerk,
+    "Dirigent": :dirigent,
+    "Solist": :solist,
+    "Aushilfe": :aushilfe,
   ], required: true %>
   </label>
   </fieldset>

@@ -139,6 +139,9 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
       "cello" -> :cello
       "kontrabass" -> :kontrabass
       "blaeser_und_schlagwerk" -> :blaeser_und_schlagwerk
+      "dirigent" -> :dirigent
+      "solist" -> :solist
+      "aushilfe" -> :aushilfe
     end
   end
 end

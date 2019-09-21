@@ -18,6 +18,9 @@ defmodule JpeKartenwunschWeb.ListeView do
       :cello -> "Cello"
       :kontrabass -> "Kontrabass"
       :blaeser_und_schlagwerk -> "Bläser und Schlagwerk"
+      :dirigent -> "Dirigent"
+      :solist -> "Solist"
+      :aushilfe -> "Aushilfe"
     end
   end
 
