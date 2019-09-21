@@ -10,6 +10,7 @@ defmodule JpeKartenwunsch.Liste.SumTest do
     normalpreis: 1,
     ermaessigt: 1,
     schueler: 1,
+    freikarte_gefluechtete: 1,
     unique_id: "kartenwunsch1",
     created: NaiveDateTime.utc_now()
   }
@@ -20,19 +21,26 @@ defmodule JpeKartenwunsch.Liste.SumTest do
     normalpreis: 1,
     ermaessigt: 1,
     schueler: 1,
+    freikarte_gefluechtete: 1,
     unique_id: "kartenwunsch2",
     created: NaiveDateTime.utc_now()
   }
 
   test "A sum of no items is empty" do
-    assert Sum.gesamtsumme([]) == %Summen{normalpreis: 0, ermaessigt: 0, schueler: 0}
+    assert Sum.gesamtsumme([]) == %Summen{
+             normalpreis: 0,
+             ermaessigt: 0,
+             schueler: 0,
+             freikarte_gefluechtete: 0
+           }
   end
 
   test "A sum of one entries contains that entry's numbers" do
     assert Sum.gesamtsumme([@kartenwunsch1]) == %Summen{
              normalpreis: 1,
              ermaessigt: 1,
-             schueler: 1
+             schueler: 1,
+             freikarte_gefluechtete: 1
            }
   end
 
@@ -40,7 +48,8 @@ defmodule JpeKartenwunsch.Liste.SumTest do
     assert Sum.gesamtsumme([@kartenwunsch1, @kartenwunsch1]) == %Summen{
              normalpreis: 2,
              ermaessigt: 2,
-             schueler: 2
+             schueler: 2,
+             freikarte_gefluechtete: 2
            }
   end
 
@@ -52,7 +61,8 @@ defmodule JpeKartenwunsch.Liste.SumTest do
                  %Summen{
                    normalpreis: 2,
                    ermaessigt: 2,
-                   schueler: 2
+                   schueler: 2,
+                   freikarte_gefluechtete: 2
                  }
                )
              ]
@@ -71,7 +81,8 @@ defmodule JpeKartenwunsch.Liste.SumTest do
                  %Summen{
                    normalpreis: 2,
                    ermaessigt: 2,
-                   schueler: 2
+                   schueler: 2,
+                   freikarte_gefluechtete: 2
                  }
                ),
                Map.merge(
@@ -79,7 +90,8 @@ defmodule JpeKartenwunsch.Liste.SumTest do
                  %Summen{
                    normalpreis: 2,
                    ermaessigt: 2,
-                   schueler: 2
+                   schueler: 2,
+                   freikarte_gefluechtete: 2
                  }
                )
              ]

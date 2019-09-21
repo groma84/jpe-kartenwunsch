@@ -8,6 +8,7 @@ defmodule JpeKartenwunsch.Kartenwunsch do
     :normalpreis,
     :ermaessigt,
     :schueler,
+    :freikarte_gefluechtete,
     :unique_id,
     :created
   ]
@@ -19,6 +20,7 @@ defmodule JpeKartenwunsch.Kartenwunsch do
             normalpreis: 0,
             ermaessigt: 0,
             schueler: 0,
+            freikarte_gefluechtete: 0,
             unique_id: nil,
             created: nil
 
@@ -28,6 +30,7 @@ defmodule JpeKartenwunsch.Kartenwunsch do
           normalpreis: Kartenanzahl.kartenanzahl(),
           ermaessigt: Kartenanzahl.kartenanzahl(),
           schueler: Kartenanzahl.kartenanzahl(),
+          freikarte_gefluechtete: Kartenanzahl.kartenanzahl(),
           unique_id: unique_id(),
           created: NaiveDateTime.t()
         }

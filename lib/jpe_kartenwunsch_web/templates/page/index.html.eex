@@ -27,8 +27,11 @@
         <label>
     Ermäßigt: <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
     </label>
-        <label>
-    Schüler: <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
+    <label>
+      Schüler: <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
+    </label>
+    <label>
+      Freikarte für Geflüchtete: <%= number_input f, :freikarte_gefluechtete, required: true, min: 0, max: 20, step: 1 %>
     </label>
   </fieldset>
   

@@ -10,6 +10,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
             normalpreis: normalpreis,
             ermaessigt: ermaessigt,
             schueler: schueler,
+            freikarte_gefluechtete: freikarte_gefluechtete,
             instrumentengruppe: instrumentengruppe,
             created: _created,
             unique_id: unique_id
@@ -23,6 +24,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
       normalpreis: normalpreis,
       ermaessigt: ermaessigt,
       schueler: schueler,
+      freikarte_gefluechtete: freikarte_gefluechtete,
       instrumentengruppe: instrumentengruppe,
       created: current_time,
       unique_id: unique_id
@@ -37,6 +39,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
             normalpreis: normalpreis,
             ermaessigt: ermaessigt,
             schueler: schueler,
+            freikarte_gefluechtete: freikarte_gefluechtete,
             instrumentengruppe: instrumentengruppe
           }
         },
@@ -50,6 +53,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
       normalpreis: normalpreis,
       ermaessigt: ermaessigt,
       schueler: schueler,
+      freikarte_gefluechtete: freikarte_gefluechtete,
       instrumentengruppe: instrumentengruppe,
       created: current_time,
       unique_id: new_id
@@ -125,6 +129,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
       normalpreis: from_storage["normalpreis"],
       ermaessigt: from_storage["ermaessigt"],
       schueler: from_storage["schueler"],
+      freikarte_gefluechtete: from_storage["freikarte_gefluechtete"],
       unique_id: from_storage["unique_id"],
       created: NaiveDateTime.from_iso8601!(from_storage["created"])
     }

@@ -4,16 +4,19 @@ defmodule JpeKartenwunsch.Liste.Summen do
   @enforce_keys [
     :normalpreis,
     :ermaessigt,
-    :schueler
+    :schueler,
+    :freikarte_gefluechtete
   ]
 
   defstruct normalpreis: 0,
             ermaessigt: 0,
-            schueler: 0
+            schueler: 0,
+            freikarte_gefluechtete: 0
 
   @type t() :: %__MODULE__{
           normalpreis: Kartenanzahl.kartenanzahl(),
           ermaessigt: Kartenanzahl.kartenanzahl(),
-          schueler: Kartenanzahl.kartenanzahl()
+          schueler: Kartenanzahl.kartenanzahl(),
+          freikarte_gefluechtete: Kartenanzahl.kartenanzahl()
         }
 end

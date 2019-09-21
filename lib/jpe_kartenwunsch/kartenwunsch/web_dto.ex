@@ -11,6 +11,7 @@ defmodule JpeKartenwunsch.Kartenwunsch.WebDto do
     field(:instrumentengruppe, :string)
     field(:schueler, :integer)
     field(:normalpreis, :integer)
+    field(:freikarte_gefluechtete, :integer)
   end
 
   @changeset_keys [
@@ -19,6 +20,7 @@ defmodule JpeKartenwunsch.Kartenwunsch.WebDto do
     :normalpreis,
     :ermaessigt,
     :schueler,
+    :freikarte_gefluechtete,
     :unique_id,
     :created
   ]
@@ -32,6 +34,7 @@ defmodule JpeKartenwunsch.Kartenwunsch.WebDto do
         normalpreis: 0,
         ermaessigt: 0,
         schueler: 0,
+        freikarte_gefluechtete: 0,
         unique_id: nil,
         created: nil,
         instrumentengruppe: "violine1"
@@ -56,6 +59,7 @@ defmodule JpeKartenwunsch.Kartenwunsch.WebDto do
       normalpreis: from_domain.normalpreis,
       ermaessigt: from_domain.ermaessigt,
       schueler: from_domain.schueler,
+      freikarte_gefluechtete: from_domain.freikarte_gefluechtete,
       unique_id: from_domain.unique_id,
       created: NaiveDateTime.to_iso8601(from_domain.created)
     }
@@ -70,5 +74,6 @@ defmodule JpeKartenwunsch.Kartenwunsch.WebDto do
     |> validate_number(:normalpreis, greater_than: -1, less_than: 21)
     |> validate_number(:ermaessigt, greater_than: -1, less_than: 21)
     |> validate_number(:schueler, greater_than: -1, less_than: 21)
+    |> validate_number(:freikarte_gefluechtete, greater_than: -1, less_than: 21)
   end
 end
