@@ -26,6 +26,9 @@ defmodule JpeKartenwunschWeb.Router do
 
     get "/liste/", ListeController, :index
 
+    get "/datenschutz/", DatenschutzController, :index
+    get "/impressum/", ImpressumController, :index
+
     # resources "/kartenwunsch", KartenwunschController, only: [:create, :edit, :update]
   end
 

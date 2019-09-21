@@ -1,0 +1,26 @@
+<h1>Datenschutz</h1>
+<p>Der Server steht in Deutschland. Es werden keine Cloud-Dienste genutzt. Es erfolgt keine Übermittlung irgendwelcher Daten in andere Länder.</p>
+
+<h2>Analyse-Software</h2>
+<p>Wir verwenden keine Analyse-Software (Google Analytics&Co.).<p>
+
+<h2>Cookies</h2>
+<p>
+    Wir verwenden für normale Nutzer keine Cookies. 
+    Für Administratoren wird aus technischen Gründen nach der Anmeldung ein Session-Cookie benötigt, um sicherzustellen, dass der Zugriff legitim ist.
+    Dieses wird bei Abmeldung gelöscht. Ebenso verfällt dessen Gültigkeit drei Tage nach dem letzten erfolgreichen Login.
+</p>
+
+<h2>Eingegebene Daten</h2>
+<p>
+    Die eingegebenen Daten (Name, Ticket-Anzahl, Stimmgruppe, ...) werden server-seitig abgespeichert, um daraus am Ende eine Liste zur Ermittlung der Gesamtzahl zu erstellen, sowie zur Verteilung an die jeweiligen Personen.
+    Diese Informationen werden nur zu genau diesen Zwecken verwendet. Eine anderweitige Nutzung oder gar Weitergabe erfolgt nicht. 
+    Die Daten werden allerdings unbegrenzte Zeit auf dem Server gespeichert - eine automatische Lösung erfolgt nicht.
+</p>
+
+<h2>Sonstige Daten</h2>
+<p>
+    Wir protokollieren die Daten, die von Ihrem Browser automatisch jeder besuchten Webseite mitgeteilt werden: 
+    Ihre IP-Adresse (teilanonymisiert, ein Rückschluss auf die vollständige IP-Adresse ist nicht mehr möglich), der verwendete Browser (Version, Betriebssystem), die eingestellte bevorzugte Sprache, die Uhrzeit des Besuchs, die jeweils besuchte (Unter-)Seite, und die direkt davon aufgerufene Seite (der sogenannte "Referrer"). 
+    Diese Daten werden gespeichert, um bei eventuellem Missbrauch der Seite eine nachträgliche Analyse zu ermöglichen. Sonstige Auswertungen erfolgen nicht.
+</p>

@@ -11,6 +11,8 @@
     <header>
       <section class="container phx-hero">
         <a href="<%= Routes.page_path(@conn, :index) %>">JPE Kartenwunsch</a>
+        <a href="<%= Routes.datenschutz_path(@conn, :index) %>">Datenschutz</a>
+        <a href="<%= Routes.impressum_path(@conn, :index) %>">Impressum</a>
       </section>
     </header>
     <main role="main" class="container">

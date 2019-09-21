@@ -7,10 +7,10 @@
 [✓] Dialyzer-Fehler fixen
 [✓] Semestertrennung
 [✓] Liste mit Summen
+[✓] Datenschutz/Impressum Text
+- Fehlermeldung verbessern bei ungültiger Id
 - Tabellenzeilen alternierend einfärben
 - Druckansicht für Liste
-- Datenschutz/Impressum Text
-- Fehlermeldung verbessern bei ungültiger Id
 - Layout verbessern (auch für mobile)
 ### von Friederike
 [✓] weitere Auswahlmöglichkeiten bei Stimmgruppen bei Eingabe: Dirigent, Solist, Aushilfe
