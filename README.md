@@ -15,7 +15,7 @@
 ### von Friederike
 [✓] weitere Auswahlmöglichkeiten bei Stimmgruppen bei Eingabe: Dirigent, Solist, Aushilfe
 [✓] zusätzliche Ticketkategorie: Freikarte für Flüchtlinge
-- zusätzlich einblenden bei Ticketkategorien: Preis (6€, 12€, 15€), Gültigkeit Schülerticket (nur bis 12 Jahre)
+[✓] zusätzlich einblenden bei Ticketkategorien: Preis (6€, 12€, 15€), Gültigkeit Schülerticket (nur bis 12 Jahre)
 - Sortierfunktion der Liste: nach Stimmgruppen
 - Ende des VVK einstellbar (Kartenwunsch-Eingabe freigeben/sperren)
 - Stoppen des VVK bei Ende einstellbar

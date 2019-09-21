@@ -26,13 +26,13 @@
   
   <fieldset name="karten">
     <label>
-    Normalpreiskarten: <%= number_input f, :normalpreis, required: true, min: 0, max: 20, step: 1 %>
+    Normalpreiskarten (15€): <%= number_input f, :normalpreis, required: true, min: 0, max: 20, step: 1 %>
     </label>
         <label>
-    Ermäßigt: <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
+    Ermäßigt (12€): <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
     </label>
     <label>
-      Schüler: <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
+      Schüler (6€, nur gültig bis 12 Jahre): <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
     </label>
     <label>
       Freikarte für Geflüchtete: <%= number_input f, :freikarte_gefluechtete, required: true, min: 0, max: 20, step: 1 %>
@@ -41,7 +41,7 @@
   
   <fieldset name="metadata">
     <label>
-      Zuletzt geändert: <%= @changeset.changes.created %>
+      Zuletzt geändert: <%= @changeset.changes.created %> Uhr
     </label>
     <%= hidden_input f, :created %>
     <%= hidden_input f, :unique_id %>
