@@ -8,14 +8,28 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
     do: create_or_update(conn, new_kartenwunsch, "gespeichert")
 
   def edit(conn, %{"id" => unique_id}) do
-    as_changeset =
+    from_persistence =
       KartenwunschRepo.get(unique_id, JpeKartenwunsch.Path.FilePath.get_file_path())
-      |> WebDto.from_domain()
-      # latest edit is enough
-      |> Enum.at(0)
-      |> WebDto.to_changeset()
 
-    render(conn, "update.html", changeset: as_changeset)
+    case from_persistence do
+      [] ->
+        conn
+        |> put_flash(
+          :error,
+          "Kartenwunsch mit der Nummer '#{unique_id}' wurde leider nicht gefunden."
+        )
+        |> redirect(to: Routes.page_path(conn, :index))
+
+      _ ->
+        as_changeset =
+          from_persistence
+          |> WebDto.from_domain()
+          # latest edit is enough
+          |> Enum.at(0)
+          |> WebDto.to_changeset()
+
+        render(conn, "update.html", changeset: as_changeset)
+    end
   end
 
   def update(conn, %{"edited_kartenwunsch" => edited_kartenwunsch}),
