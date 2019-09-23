@@ -12,7 +12,10 @@ config :jpe_kartenwunsch, JpeKartenwunschWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "U+sHzSZiil9iuqot00pSY7wJCKYAFfJQbEUSxDT6vxEnIbsr7Y7bMGLqnlGoPnSZ",
   render_errors: [view: JpeKartenwunschWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: JpeKartenwunsch.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: JpeKartenwunsch.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "Th+AJY8LIJyKfRIoU5bWGFSqbOuw5jcS"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -21,6 +24,8 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :phoenix, :template_engines, leex: Phoenix.LiveView.Engine
 
 # Disable tzdata auto-updates
 config :tzdata, :autoupdate, :disabled

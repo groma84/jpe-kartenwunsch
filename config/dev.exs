@@ -55,7 +55,8 @@ config :jpe_kartenwunsch, JpeKartenwunschWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/jpe_kartenwunsch_web/{live,views}/.*(ex)$",
-      ~r"lib/jpe_kartenwunsch_web/templates/.*(eex)$"
+      ~r"lib/jpe_kartenwunsch_web/templates/.*(eex)$",
+      ~r{lib/jpe_kartenwunsch_web/live/.*(ex)$}
     ]
   ]
 

@@ -44,7 +44,9 @@ defmodule JpeKartenwunsch.MixProject do
       {:phoenix_ecto, "~> 4.0"},
       {:tzdata, "~> 1.0.0"},
       {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
-      {:distillery, "~> 2.0"}
+      {:distillery, "~> 2.0"},
+      {:phoenix_live_view, "~> 0.3.0"},
+      {:floki, ">= 0.0.0", only: :test}
     ]
   end
 end

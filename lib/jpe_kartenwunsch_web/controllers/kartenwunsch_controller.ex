@@ -28,7 +28,7 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
           |> Enum.at(0)
           |> WebDto.to_changeset()
 
-        render(conn, "update.html", changeset: as_changeset)
+        Phoenix.Controller.render(conn, "update.html", changeset: as_changeset)
     end
   end
 

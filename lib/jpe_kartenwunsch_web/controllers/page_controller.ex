@@ -4,6 +4,6 @@ defmodule JpeKartenwunschWeb.PageController do
   import JpeKartenwunsch.Kartenwunsch.WebDto
 
   def index(conn, _params) do
-    render(conn, "index.html", changeset: empty_changeset())
+    Phoenix.Controller.render(conn, "index.html", changeset: empty_changeset())
   end
 end

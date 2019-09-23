@@ -1,6 +1,8 @@
 defmodule JpeKartenwunschWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :jpe_kartenwunsch
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", JpeKartenwunschWeb.UserSocket,
     websocket: true,
     longpoll: false
