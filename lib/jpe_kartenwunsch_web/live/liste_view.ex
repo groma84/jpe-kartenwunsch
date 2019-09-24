@@ -37,12 +37,12 @@ defmodule JpeKartenwunschWeb.ListeView do
     <thead>
       <tr>
         <td>Name</td>
-        <td>Instrumentengruppe</td>
+        <td>Instrumentengruppe <button phx-click="sort_by" phx-value-field="instrumentengruppe">▲▼</button></td>
         <td>Normal</td>
         <td>Ermäßigt</td>
         <td>Schüler</td>
         <td>Freikarte für Geflüchtete</td>
-        <td>Zuletzt geändert</td>
+        <td>Zuletzt geändert <button phx-click="sort_by" phx-value-field="created">▲▼</button></td>
         <td>Nummer</td>
       </tr>
     </thead>
@@ -71,10 +71,26 @@ defmodule JpeKartenwunschWeb.ListeView do
 
     {:ok,
      assign(socket,
+       last_sort_direction: "",
        data: page_data.data,
        summen_by_instrumentengruppe: page_data.summen_by_instrumentengruppe,
        gesamtsumme: page_data.gesamtsumme
      )}
+  end
+
+  def handle_event("sort_by", %{"field" => field}, socket) do
+    %{last_sort_direction: last_sort_direction} = socket.assigns
+
+    sort_direction =
+      case last_sort_direction do
+        "" -> "ascending"
+        "ascending" -> "descending"
+        "descending" -> "ascending"
+      end
+
+    page_data_sorted = JpeKartenwunsch.Liste.PageData.get_data_sorted(field, sort_direction)
+
+    {:noreply, assign(socket, data: page_data_sorted, last_sort_direction: sort_direction)}
   end
 
   def prettify_date(iso_date) do
