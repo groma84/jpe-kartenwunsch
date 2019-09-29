@@ -1,45 +1,7 @@
 <section id="new_kartenwunsch">
-<%= form_for @changeset, Routes.kartenwunsch_path(@conn, :create), [as: :new_kartenwunsch], fn f -> %>
-  <fieldset name="stammdaten">
-  <label>
-    Name: <%= text_input f, :name, required: true, minlength: 2, maxlength: 150 %>
-  </label>
-
-  <label>
-  Instrumentengruppe: <%= select f, :instrumentengruppe, [
-    "Violine I": :violine1,
-    "Violine II": :violine2,
-    "Viola": :viola,
-    "Cello": :cello,
-    "Kontrabass": :kontrabass,
-    "Bläser und Schlagwerk": :blaeser_und_schlagwerk,
-    "Dirigent": :dirigent,
-    "Solist": :solist,
-    "Aushilfe": :aushilfe,
-  ], required: true %>
-  </label>
-  </fieldset>
-  
-  <fieldset name="karten">
-    <label>
-    Normalpreiskarten (13€): <%= number_input f, :normalpreis, required: true, min: 0, max: 20, step: 1 %>
-    </label>
-        <label>
-    Ermäßigt (11€): <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
-    </label>
-    <label>
-      Schüler (6€, nur gültig bis 12 Jahre): <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
-    </label>
-    <label>
-      Freikarte für Geflüchtete: <%= number_input f, :freikarte_gefluechtete, required: true, min: 0, max: 20, step: 1 %>
-    </label>
-  </fieldset>
-  
-
-  <%= submit "Absenden" %>
-<% end %>
-
+  <%= render JpeKartenwunschWeb.KartenwunschSharedView, "kartenwunsch.html", assigns %>
 </section>
+
 <section id="insert_existing_id">
   <%= form_for @conn, Routes.bestehend_path(@conn, :redirect_to_edit), fn f -> %>
     <label>

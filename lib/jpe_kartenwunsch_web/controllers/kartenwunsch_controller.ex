@@ -28,7 +28,12 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
           |> Enum.at(0)
           |> WebDto.to_changeset()
 
-        Phoenix.Controller.render(conn, "update.html", changeset: as_changeset)
+        Phoenix.Controller.render(conn, "update.html",
+          changeset: as_changeset,
+          action: Routes.kartenwunsch_path(conn, :update, as_changeset.changes.unique_id),
+          as: :edited_kartenwunsch,
+          submit_text: "Aktualisieren"
+        )
     end
   end
 

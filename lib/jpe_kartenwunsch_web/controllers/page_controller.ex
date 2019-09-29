@@ -4,6 +4,11 @@ defmodule JpeKartenwunschWeb.PageController do
   import JpeKartenwunsch.Kartenwunsch.WebDto
 
   def index(conn, _params) do
-    Phoenix.Controller.render(conn, "index.html", changeset: empty_changeset())
+    Phoenix.Controller.render(conn, "index.html",
+      changeset: empty_changeset(),
+      action: Routes.kartenwunsch_path(conn, :create),
+      as: :new_kartenwunsch,
+      submit_text: "Absenden"
+    )
   end
 end
