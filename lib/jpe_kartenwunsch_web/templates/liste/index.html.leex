@@ -1,9 +1,4 @@
-defmodule JpeKartenwunschWeb.ListeView do
-  use Phoenix.LiveView
-
-  def render(assigns) do
-    ~L"""
-    <section id="liste">
+<section id="liste">
     <table>
     <thead>
       <tr>
@@ -63,61 +58,3 @@ defmodule JpeKartenwunschWeb.ListeView do
     </tbody>
     </table>
     </section>
-    """
-  end
-
-  def mount(_session, socket) do
-    page_data = JpeKartenwunsch.Liste.PageData.get_data()
-
-    {:ok,
-     assign(socket,
-       last_sort_direction: "",
-       data: page_data.data,
-       summen_by_instrumentengruppe: page_data.summen_by_instrumentengruppe,
-       gesamtsumme: page_data.gesamtsumme
-     )}
-  end
-
-  def handle_event("sort_by", %{"field" => field}, socket) do
-    %{last_sort_direction: last_sort_direction} = socket.assigns
-
-    sort_direction =
-      case last_sort_direction do
-        "" -> "ascending"
-        "ascending" -> "descending"
-        "descending" -> "ascending"
-      end
-
-    page_data_sorted = JpeKartenwunsch.Liste.PageData.get_data_sorted(field, sort_direction)
-
-    {:noreply, assign(socket, data: page_data_sorted, last_sort_direction: sort_direction)}
-  end
-
-  def prettify_date(iso_date) do
-    ndt = NaiveDateTime.from_iso8601!(iso_date)
-
-    date = "#{pad_num_2(ndt.day)}.#{pad_num_2(ndt.month)}.#{ndt.year}"
-    time = "#{pad_num_2(ndt.hour)}:#{pad_num_2(ndt.minute)} Uhr"
-
-    "#{date} - #{time}"
-  end
-
-  def prettify_instrumentengruppe(instrumentengruppe) do
-    case instrumentengruppe do
-      :violine1 -> "Violine I"
-      :violine2 -> "Violine II"
-      :viola -> "Viola"
-      :cello -> "Cello"
-      :kontrabass -> "Kontrabass"
-      :blaeser_und_schlagwerk -> "Bläser und Schlagwerk"
-      :dirigent -> "Dirigent"
-      :solist -> "Solist"
-      :aushilfe -> "Aushilfe"
-    end
-  end
-
-  @spec pad_num_2(integer()) :: String.t()
-  defp pad_num_2(num) do
-    "#{String.pad_leading(Integer.to_string(num), 2, "0")}"
-  end
-end

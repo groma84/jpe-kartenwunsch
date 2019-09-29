@@ -3,6 +3,6 @@ defmodule JpeKartenwunschWeb.ListeController do
   alias Phoenix.LiveView
 
   def index(conn, _params) do
-    LiveView.Controller.live_render(conn, JpeKartenwunschWeb.ListeView, session: %{})
+    LiveView.Controller.live_render(conn, JpeKartenwunschWeb.ListeLive, session: %{})
   end
 end

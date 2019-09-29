@@ -26,10 +26,10 @@
   
   <fieldset name="karten">
     <label>
-    Normalpreiskarten (15€): <%= number_input f, :normalpreis, required: true, min: 0, max: 20, step: 1 %>
+    Normalpreiskarten (13€): <%= number_input f, :normalpreis, required: true, min: 0, max: 20, step: 1 %>
     </label>
         <label>
-    Ermäßigt (12€): <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
+    Ermäßigt (11€): <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
     </label>
     <label>
       Schüler (6€, nur gültig bis 12 Jahre): <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
