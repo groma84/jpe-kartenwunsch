@@ -1,4 +1,6 @@
 defmodule JpeKartenwunsch.Kartenwunsch do
+  alias JpeKartenwunsch.Kartenwunsch.{Instrumentengruppe, Kartenanzahl}
+
   @type name() :: String.t()
   @type unique_id() :: String.t()
 

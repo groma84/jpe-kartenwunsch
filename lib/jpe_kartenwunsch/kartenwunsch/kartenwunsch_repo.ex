@@ -1,5 +1,6 @@
 defmodule JpeKartenwunsch.KartenwunschRepo do
   alias JpeKartenwunsch.Kartenwunsch
+  alias JpeKartenwunsch.Kartenwunsch.Instrumentengruppe
 
   @spec web_dto_to_domain(Ecto.Changeset.t(), String.t(), NaiveDateTime.t()) :: %Kartenwunsch{}
   def web_dto_to_domain(
@@ -137,7 +138,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     }
   end
 
-  @spec to_instrumentengruppe(String.t()) :: Kartenwunsch.instrumentengruppe()
+  @spec to_instrumentengruppe(String.t()) :: Instrumentengruppe.instrumentengruppe()
   defp to_instrumentengruppe(as_string) do
     case as_string do
       "violine1" -> :violine1
