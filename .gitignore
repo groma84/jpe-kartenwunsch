@@ -44,4 +44,5 @@ npm-debug.log
 /.elixir_ls/
 ttb_last_config
 *.db.txt
+*_vorverkauf_aktiv.txt
 ids.txt

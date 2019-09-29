@@ -17,6 +17,13 @@ defmodule JpeKartenwunsch.Path.FilePath do
     end)
   end
 
+  @spec get_vorverkauf_file_path() :: String.t()
+  def get_vorverkauf_file_path() do
+    Agent.get(__MODULE__, fn base_path ->
+      "#{base_path}_vorverkauf_aktiv.txt"
+    end)
+  end
+
   defp get_file_path_from_env(), do: Application.get_env(:jpe_kartenwunsch, :database_file)
 
   @spec month_to_semester(pos_integer()) :: String.t()

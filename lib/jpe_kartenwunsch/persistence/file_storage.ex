@@ -23,4 +23,10 @@ defmodule JpeKartenwunsch.Persistence.FileStorage do
       File.write!(full_path, encoded <> "\r\n", [:append])
     end)
   end
+
+  def replace_content(new_content, full_path) do
+    JpeKartenwunsch.Persistence.Serializer.write(fn ->
+      File.write!(full_path, new_content)
+    end)
+  end
 end

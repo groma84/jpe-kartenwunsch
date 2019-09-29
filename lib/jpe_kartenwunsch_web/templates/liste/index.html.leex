@@ -1,3 +1,22 @@
+<section id="adminControls">
+  <ul>
+    <li>
+      <%= f = form_for :admin, "#", [phx_submit: :toggle_vorverkauf] %>
+        <%= password_input f, :admin_password, placeholder: "Admin-Passwort" %>
+        <%= if @admin_password_wrong do %>
+          <div>Das Admin-Passwort ist leider falsch.</div>
+        <% end %>
+
+        <%= if @vorverkauf_aktiv do %>
+          <%= submit "Vorverkauf stoppen" %>
+        <% else %>
+          <%= submit "Vorverkauf starten" %>
+        <% end %>
+      </form>
+    </li>
+  </ul>
+</section>
+
 <section id="liste">
     <table>
     <thead>
