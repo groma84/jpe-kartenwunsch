@@ -32,7 +32,11 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
           changeset: as_changeset,
           action: Routes.kartenwunsch_path(conn, :update, as_changeset.changes.unique_id),
           as: :edited_kartenwunsch,
-          submit_text: "Aktualisieren"
+          submit_text: "Aktualisieren",
+          disabled:
+            !JpeKartenwunsch.Administration.Admin.vorverkauf_aktiv(
+              JpeKartenwunsch.Path.FilePath.get_vorverkauf_file_path()
+            )
         )
     end
   end
@@ -47,13 +51,17 @@ defmodule JpeKartenwunschWeb.KartenwunschController do
 
   defp create_or_update(conn, kartenwunsch, success_verb) do
     full_file_path = JpeKartenwunsch.Path.FilePath.get_file_path()
+    vorverkauf_file_path = JpeKartenwunsch.Path.FilePath.get_vorverkauf_file_path()
     current_time = JpeKartenwunsch.Time.TimeGetter.now()
 
     kw =
       WebDto.create_new(kartenwunsch)
       |> KartenwunschRepo.web_dto_to_domain(full_file_path, current_time)
 
-    KartenwunschRepo.insert(kw, full_file_path)
+    vorverkauf_active =
+      JpeKartenwunsch.Administration.Admin.vorverkauf_aktiv(vorverkauf_file_path)
+
+    KartenwunschRepo.insert(kw, full_file_path, vorverkauf_active)
 
     conn
     |> put_flash(:info, "Kartenwunsch mit der Nummer '#{kw.unique_id}' wurde #{success_verb}")

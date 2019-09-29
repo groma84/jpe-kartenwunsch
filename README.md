@@ -17,5 +17,5 @@
 [✓] zusätzliche Ticketkategorie: Freikarte für Flüchtlinge
 [✓] zusätzlich einblenden bei Ticketkategorien: Preis (6€, 12€, 15€), Gültigkeit Schülerticket (nur bis 12 Jahre)
 [✓] Sortierfunktion der Liste: nach Stimmgruppen (Elm oder Live-View?)
-[ ] Ende des VVK einstellbar (Kartenwunsch-Eingabe freigeben/sperren)
+[✓] Ende des VVK einstellbar (Kartenwunsch-Eingabe freigeben/sperren)
 - Anzahl verfügbarer Karten anzeigbar: Einstellbar, wieviele Karten pro Typ überhaupt verfügbar sind - dann keine Eingabe mehr ermöglichen, sobald Maximalzahl erreicht wurde. Wie ist es mit Dirigent&Solist? Diese beachten die Grenzen einfach nicht, sondern können immer welche anfordern. Idealerweise aktualisiert sich die verfügbare Anzahl in Echtzeit (Elm&Websocket oder Live-View?)

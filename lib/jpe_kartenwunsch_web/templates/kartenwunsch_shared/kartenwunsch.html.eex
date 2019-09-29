@@ -7,8 +7,12 @@
   </label>
   <% end %>
 
+  <%= if @disabled do %>
+    <div>ACHTUNG: Kartenwünsche abgeben ist leider nicht mehr möglich.</div>
+  <% end %>
+
   <label>
-    Name: <%= text_input f, :name, required: true, minlength: 2, maxlength: 150 %>
+    Name: <%= text_input f, :name, required: true, disabled: @disabled, minlength: 2, maxlength: 150 %>
   </label>
 
   <label>
@@ -22,22 +26,23 @@
     "Dirigent": :dirigent,
     "Solist": :solist,
     "Aushilfe": :aushilfe,
-  ], required: true %>
+  ], required: true,
+  disabled: @disabled %>
   </label>
   </fieldset>
   
   <fieldset name="karten">
     <label>
-    Normalpreiskarten (13€): <%= number_input f, :normalpreis, required: true, min: 0, max: 20, step: 1 %>
+    Normalpreiskarten (13€): <%= number_input f, :normalpreis, required: true, disabled: @disabled, min: 0, max: 20, step: 1 %>
     </label>
         <label>
-    Ermäßigt (11€): <%= number_input f, :ermaessigt, required: true, min: 0, max: 20, step: 1 %>
+    Ermäßigt (11€): <%= number_input f, :ermaessigt, required: true, disabled: @disabled, min: 0, max: 20, step: 1 %>
     </label>
     <label>
-      Schüler (6€, nur gültig bis 12 Jahre): <%= number_input f, :schueler, required: true, min: 0, max: 20, step: 1 %>
+      Schüler (6€, nur gültig bis 12 Jahre): <%= number_input f, :schueler, required: true, disabled: @disabled, min: 0, max: 20, step: 1 %>
     </label>
     <label>
-      Freikarte für Geflüchtete: <%= number_input f, :freikarte_gefluechtete, required: true, min: 0, max: 20, step: 1 %>
+      Freikarte für Geflüchtete: <%= number_input f, :freikarte_gefluechtete, required: true, disabled: @disabled, min: 0, max: 20, step: 1 %>
     </label>
   </fieldset>
   
@@ -51,5 +56,5 @@
   </fieldset>
   <% end %>
 
-  <%= submit @submit_text %>
+  <%= if !@disabled do submit @submit_text end %>
 <% end %>

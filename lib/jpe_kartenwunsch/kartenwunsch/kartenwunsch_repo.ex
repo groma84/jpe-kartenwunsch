@@ -70,10 +70,12 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
     get_internal_sorted(fn kw -> kw.unique_id == unique_id end, full_path)
   end
 
-  @spec insert(%Kartenwunsch{}, String.t()) :: :ok
-  def insert(kartenwunsch = %Kartenwunsch{}, full_path) do
-    {:ok, encoded} = Jason.encode(kartenwunsch)
-    JpeKartenwunsch.Persistence.FileStorage.write(encoded, full_path)
+  @spec insert(%Kartenwunsch{}, String.t(), boolean) :: :ok
+  def insert(kartenwunsch = %Kartenwunsch{}, full_path, vorverkauf_active) do
+    if !vorverkauf_active do
+      {:ok, encoded} = Jason.encode(kartenwunsch)
+      JpeKartenwunsch.Persistence.FileStorage.write(encoded, full_path)
+    end
   end
 
   @spec get_internal_sorted((any() -> bool()), String.t()) :: [Kartenwunsch.t()]
