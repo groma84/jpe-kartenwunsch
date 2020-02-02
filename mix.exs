@@ -55,7 +55,8 @@ defmodule JpeKartenwunsch.MixProject do
       {:tzdata, "~> 1.0.0"},
       {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
       {:distillery, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.3.0"}
+      {:phoenix_live_view, "~> 0.3.0"},
+      {:colorized_inspect, "~> 1.0.0"}
     ]
   end
 end

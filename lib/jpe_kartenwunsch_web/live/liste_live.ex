@@ -34,7 +34,13 @@ defmodule JpeKartenwunschWeb.ListeLive do
         "descending" -> "ascending"
       end
 
-    page_data_sorted = JpeKartenwunsch.Liste.PageData.get_data_sorted(field, sort_direction)
+    sort_direction_atom =
+      case sort_direction do
+        "ascending" -> :asc
+        "descending" -> :desc
+      end
+
+    page_data_sorted = JpeKartenwunsch.Liste.PageData.get_data_sorted(field, sort_direction_atom)
 
     {:noreply, assign(socket, data: page_data_sorted, last_sort_direction: sort_direction)}
   end

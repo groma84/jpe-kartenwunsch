@@ -26,50 +26,35 @@ defmodule JpeKartenwunsch.Liste.PageData do
     }
   end
 
-  def get_data_sorted(field, direction) do
+  def get_data_sorted(field, sort_direction_atom) do
     JpeKartenwunsch.Path.FilePath.get_file_path()
     |> get_valid_entries()
-    |> sort_by(field, direction)
+    |> sort_by(field, sort_direction_atom)
     |> WebDto.from_domain()
   end
 
-  # TODO: Sorting is bugged -> write tests and fix!
-  defp sort_by(entries, field, direction) do
-    sort_direction_fn =
-      case direction do
-        "ascending" -> &Enum.sort/1
-        "descending" -> &Enum.reverse/1
-      end
-
+  defp sort_by(entries, field, sort_direction_atom) do
     sort_field_fn =
       case field do
         "instrumentengruppe" ->
-          &Enum.sort/1
+          &Enum.sort_by(&1, fn entry -> entry.instrumentengruppe end, sort_direction_atom)
 
         "created" ->
-          &Enum.sort(&1, fn l, r -> sort_by_date(l, r, :lt) end)
+          &Enum.sort_by(&1, fn entry -> entry.created end, {sort_direction_atom, NaiveDateTime})
       end
 
-    sorted =
-      entries
-      |> sort_field_fn.()
-      |> sort_direction_fn.()
-
-    sorted
+    entries
+    |> sort_field_fn.()
   end
 
   defp get_valid_entries(full_path) do
     KartenwunschRepo.get_all(full_path)
-    |> Enum.group_by(fn x -> x.unique_id end)
+    |> Enum.group_by(& &1.unique_id)
     |> Enum.map(fn {_key, lis} ->
       lis
-      |> Enum.dedup_by(fn x -> x.unique_id end)
+      |> Enum.dedup_by(& &1.unique_id)
       |> Enum.at(0)
     end)
-    |> Enum.sort(&sort_by_date(&1, &2, :gt))
-  end
-
-  defp sort_by_date(entry1, entry2, compare_direction) do
-    NaiveDateTime.compare(entry1.created, entry2.created) == compare_direction
+    |> Enum.sort_by(& &1.created, {:desc, NaiveDateTime})
   end
 end
