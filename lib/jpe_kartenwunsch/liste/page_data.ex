@@ -33,6 +33,7 @@ defmodule JpeKartenwunsch.Liste.PageData do
     |> WebDto.from_domain()
   end
 
+  # TODO: Sorting is bugged -> write tests and fix!
   defp sort_by(entries, field, direction) do
     sort_direction_fn =
       case direction do
@@ -49,9 +50,12 @@ defmodule JpeKartenwunsch.Liste.PageData do
           &Enum.sort(&1, fn l, r -> sort_by_date(l, r, :lt) end)
       end
 
-    entries
-    |> sort_field_fn.()
-    |> sort_direction_fn.()
+    sorted =
+      entries
+      |> sort_field_fn.()
+      |> sort_direction_fn.()
+
+    sorted
   end
 
   defp get_valid_entries(full_path) do

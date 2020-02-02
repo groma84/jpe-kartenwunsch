@@ -73,7 +73,7 @@ defmodule JpeKartenwunsch.KartenwunschRepo do
 
   @spec insert(%Kartenwunsch{}, String.t(), boolean) :: :ok
   def insert(kartenwunsch = %Kartenwunsch{}, full_path, vorverkauf_active) do
-    if !vorverkauf_active do
+    if vorverkauf_active do
       {:ok, encoded} = Jason.encode(kartenwunsch)
       JpeKartenwunsch.Persistence.FileStorage.write(encoded, full_path)
     end

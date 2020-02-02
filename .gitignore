@@ -41,6 +41,7 @@ npm-debug.log
 # variables.
 /config/*.secret.exs
 
+/.sobelow
 /.elixir_ls/
 ttb_last_config
 *.db.txt

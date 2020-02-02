@@ -4,13 +4,23 @@ defmodule JpeKartenwunsch.MixProject do
   def project do
     [
       app: :jpe_kartenwunsch,
-      version: "0.1.0",
-      elixir: "~> 1.5",
+      version: "0.2.0",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      dialyzer: [plt_add_deps: :transitive]
+      dialyzer: [plt_add_deps: :transitive],
+      # Docs
+      name: "JPE Kartenwunsch Website",
+      source_url: "https://github.com/groma84/jpe-kartenwunsch",
+      homepage_url: "https://jpe.finde-ich-super.de",
+      docs: [
+        # The main page in the docs
+        main: "JpeKartenwunsch",
+        logo: "assets/static/images/notenschluessel.png",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -45,8 +55,7 @@ defmodule JpeKartenwunsch.MixProject do
       {:tzdata, "~> 1.0.0"},
       {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
       {:distillery, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.3.0"},
-      {:floki, ">= 0.0.0", only: :test}
+      {:phoenix_live_view, "~> 0.3.0"}
     ]
   end
 end
