@@ -14,7 +14,7 @@ use Mix.Config
 #   url: [host: "example.com", port: 80],
 #   cache_static_manifest: "priv/static/cache_manifest.json"
 config :jpe_kartenwunsch,
-  database_file: "database.txt"
+  database_file: System.get_env("JPE_KARTENWUNSCH_DATABASE_FILE")
 
 config :jpe_kartenwunsch, JpeKartenwunschWeb.Endpoint,
   http: [port: 4003],

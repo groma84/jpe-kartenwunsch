@@ -1,7 +1,13 @@
 defmodule JpeKartenwunschWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :jpe_kartenwunsch
 
-  socket "/live", Phoenix.LiveView.Socket
+  @session_options [
+    store: :cookie,
+    key: "_jpe_kartenwunsch_key",
+    signing_salt: "mPbWw9PQ"
+  ]
+
+  socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   socket "/socket", JpeKartenwunschWeb.UserSocket,
     websocket: true,
@@ -39,10 +45,7 @@ defmodule JpeKartenwunschWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_jpe_kartenwunsch_key",
-    signing_salt: "mPbWw9PQ"
+  plug Plug.Session, @session_options
 
   plug JpeKartenwunschWeb.Router
 end
