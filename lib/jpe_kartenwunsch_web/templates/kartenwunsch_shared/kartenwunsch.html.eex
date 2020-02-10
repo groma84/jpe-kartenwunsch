@@ -33,7 +33,7 @@
 
   <fieldset name="karten">
     <label>
-    Normalpreiskarten (13€): <%= number_input f, :normalpreis, required: true, disabled: @disabled, min: 0, max: 20, step: 1 %>
+    Normalpreiskarten (15€): <%= number_input f, :normalpreis, required: true, disabled: @disabled, min: 0, max: 20, step: 1 %>
     </label>
         <label>
     Ermäßigt (11€): <%= number_input f, :ermaessigt, required: true, disabled: @disabled, min: 0, max: 20, step: 1 %>

@@ -67,8 +67,8 @@ select {
   border-bottom: 1px solid #e3e3e3;
   background: #eee;
   border-radius: 6px;
-  padding: 3em;
-  margin-bottom: 3rem;
+  padding: 0.5em;
+  margin-bottom: 0.5rem;
   font-weight: 200;
   font-size: 120%;
 }
